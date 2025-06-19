@@ -4,16 +4,57 @@ This is a Quarto extension that provides a template for creating manuscripts for
 
 ## Installation
 
+### From GitHub (Recommended)
+
 To use this template in a new project:
 
 ```bash
-quarto use template urschalupnygrunder/frontiers-harvard
+quarto use template urschalupnygrunder/frontiers_quarto_extension
 ```
 
 To add this format to an existing project:
 
 ```bash
-quarto add urschalupnygrunder/frontiers-harvard
+quarto add urschalupnygrunder/frontiers_quarto_extension
+```
+
+### From Local Files
+
+If you've cloned or downloaded this repository to your local machine:
+
+1. **Clone or download** this repository to your computer
+2. **Navigate to your Quarto project** directory in the terminal
+3. **Install the extension** from the local path:
+
+```bash
+quarto add /path/to/frontiers_quarto_extension
+```
+
+For example, if you downloaded the extension to your Downloads folder:
+```bash
+quarto add ~/Downloads/frontiers_quarto_extension
+```
+
+Or if you cloned it to a specific directory:
+```bash
+quarto add /Users/yourusername/GitHub_Repos/frontiers_quarto_extension
+```
+
+**Alternative local installation:**
+You can also copy the entire extension folder to your project's `_extensions` directory:
+
+1. Create an `_extensions` folder in your Quarto project (if it doesn't exist)
+2. Copy the entire `frontiers_quarto_extension` folder into `_extensions/`
+3. Rename it to `frontiers-harvard` for consistency:
+```
+your-project/
+├── _extensions/
+│   └── frontiers-harvard/
+│       ├── _extension.yml
+│       ├── Frontiers-Harvard.bst
+│       └── ... (all other files)
+├── your-document.qmd
+└── references.bib
 ```
 
 ## Usage
@@ -52,6 +93,16 @@ The bibliography now follows the Frontiers CSL style with:
 - Journal names italicized
 - Volume and pages separated by comma (e.g., "Volume 10, e3360")
 - Clickable DOI links formatted as "doi: 10.1002/example" that link to https://doi.org/...
+
+## Development and Contribution
+
+This extension includes custom enhancements to improve bibliography formatting and add clickable DOI functionality. For developers interested in contributing or understanding the technical implementation:
+
+- **CLAUDE.md**: Contains detailed technical documentation for AI-assisted development
+- **Custom BST file**: The `Frontiers-Harvard.bst` file has been modified with enhanced functions for DOI linking and CSL-compatible formatting
+- **Testing**: Use the included `frontiers-template.qmd` and `references.bib` for testing changes
+
+When making modifications, always clear bibliography cache files (`.aux`, `.bbl`, `.blg`) before testing to ensure changes take effect.
 
 ## Changelog
 
