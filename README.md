@@ -9,13 +9,13 @@ This is a Quarto extension that provides a template for creating manuscripts for
 To use this template in a new project:
 
 ```bash
-quarto use template urschalupnygrunder/frontiers_quarto_extension
+quarto use template Theurrien/frontiers_quarto_extension
 ```
 
 To add this format to an existing project:
 
 ```bash
-quarto add urschalupnygrunder/frontiers_quarto_extension
+quarto add Theurrien/frontiers_quarto_extension
 ```
 
 ### From Local Files
