@@ -996,8 +996,6 @@ FUNCTION {book}
   if$
   format.edition output
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 FUNCTION {booklet}
@@ -1011,8 +1009,6 @@ FUNCTION {booklet}
   howpublished "howpublished" bibinfo.check output
   address "address" bibinfo.check output
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 
@@ -1050,8 +1046,6 @@ FUNCTION {inbook}
   format.edition output
   format.pages "pages" output.check
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 
@@ -1078,8 +1072,6 @@ FUNCTION {incollection}
   if$
   format.pages "pages" output.check
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 FUNCTION {inproceedings}
@@ -1107,8 +1099,6 @@ FUNCTION {inproceedings}
   if$
   format.pages "pages" output.check
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 FUNCTION {conference} { inproceedings }
@@ -1124,8 +1114,6 @@ FUNCTION {manual}
   address "address" bibinfo.check output
   format.edition output
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 
@@ -1142,8 +1130,6 @@ FUNCTION {mastersthesis}
   school "school" bibinfo.warn output
   address "address" bibinfo.check output
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 
@@ -1158,8 +1144,6 @@ FUNCTION {misc}
   new.block
   howpublished "howpublished" bibinfo.check output
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 FUNCTION {phdthesis}
@@ -1175,8 +1159,6 @@ FUNCTION {phdthesis}
   school "school" bibinfo.warn output
   address "address" bibinfo.check output
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 
@@ -1197,8 +1179,6 @@ FUNCTION {proceedings}
     }
   if$
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 
@@ -1215,8 +1195,6 @@ FUNCTION {techreport}
   institution "institution" bibinfo.warn output
   address "address" bibinfo.check output
   format.doi output
-  new.block
-  format.note output
   fin.entry
 }
 
