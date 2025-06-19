@@ -1,0 +1,39 @@
+title: Frontiers Harvard Format
+author: Urs Chalupny
+version: 1.1.0
+quarto-required: ">= 1.6.0"
+contributes:
+  formats:
+    pdf:
+      documentclass: FrontiersinHarvard
+      classoption: utf8
+      pdf-engine: pdflatex
+      cite-method: natbib
+      biblio-style: Frontiers-Harvard
+      keep-tex: true
+      number-sections: true
+      secnumdepth: 5
+      # Pandoc handles .unnumbered and .appendix classes automatically
+      header-includes: |
+        \usepackage{url,hyperref,lineno,microtype,multirow}
+        \usepackage[onehalfspacing]{setspace}
+        \usepackage{amssymb}
+        % Handle Unicode characters
+        \DeclareUnicodeCharacter{2212}{-}
+        \DeclareUnicodeCharacter{2705}{\checkmark}
+        % Provide basic subcaption compatibility for Frontiers
+        \renewcommand{\subcaption}[1]{\caption{#1}}
+        \linenumbers
+        \onecolumn
+        % Ensure proper section numbering depth
+        \setcounter{secnumdepth}{5}
+        % Set page style for running headers
+        \pagestyle{headings}
+        % Custom command to handle unnumbered sections with asterisk
+        \newcommand{\unnumberedsection}[1]{\section*{#1}}
+      template-partials:
+        - "partials/before-body.tex"
+        - "partials/after-body.tex"
+      format-resources:
+        - FrontiersinHarvard.cls
+        - Frontiers-Harvard.bst

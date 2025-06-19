@@ -1,0 +1,72 @@
+---
+title: "Article Title for Frontiers Journal"
+shorttitle: "Short Running Title"
+format:
+  frontiers-harvard-pdf:
+    keep-tex: true
+author:
+  - name:
+      given: First
+      family: Author
+    affiliations:
+      - ref: aff1
+    attributes:
+      corresponding: true
+    email: first.author@university.edu
+    orcid: 0000-0000-0000-0000
+  - name:
+      given: Second
+      family: Author
+    affiliations:
+      - ref: aff1
+      - ref: aff2
+affiliations:
+  - id: aff1
+    number: 1
+    name: Laboratory X, Institute X
+    department: Department X
+    city: City X
+    country: Country X
+  - id: aff2
+    number: 2
+    name: Laboratory Y, Institute Y
+    department: Department Y
+    city: City Y
+    country: Country Y
+abstract: |
+  This is the abstract text. It should be a single paragraph that summarizes the main findings and implications of your research. The abstract should be between 150-250 words and provide a clear overview of your study's objectives, methods, results, and conclusions.
+keywords: [keyword1, keyword2, keyword3, keyword4, keyword5]
+bibliography: references.bib
+# Frontiers-specific metadata
+conflict-of-interest: |
+  The authors declare that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.
+author-contributions: |
+  FA conceived and designed the study. FA and SA collected and analyzed the data. FA wrote the first draft of the manuscript. All authors contributed to manuscript revision, read, and approved the submitted version.
+funding: |
+  This work was supported by Grant XYZ from the National Science Foundation.
+acknowledgments: |
+  The authors thank the laboratory staff for their assistance with data collection.
+data-availability: |
+  The raw data supporting the conclusions of this article will be made available by the authors, without undue reservation.
+---
+
+# Introduction
+
+This is an example Frontiers manuscript using the Harvard citation style. Citations can be made using standard Quarto syntax [@example2023].
+
+# Methods
+
+Describe your methodology here. Multiple citations can be included [@example2023; @another2024].
+
+# Results
+
+Present your findings here.
+
+# Discussion
+
+Discuss your results and their implications.
+
+# References
+
+::: {#refs}
+:::

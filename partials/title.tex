@@ -1,0 +1,37 @@
+% Frontiers title block setup
+$if(firstpage)$
+\firstpage{$firstpage$}
+$else$
+\firstpage{1}
+$endif$
+
+% Title setup
+$if(title)$
+$if(shorttitle)$
+\title[$shorttitle$]{$title$}
+$else$
+\title[$title$]{$title$}
+$endif$
+$endif$
+
+% Author setup
+$if(by-author)$
+\def\firstAuthorLast{$for(by-author)$$if(by-author.attributes.corresponding)$$by-author.name.family$ {et~al.}$endif$$endfor$}
+\def\Authors{$for(by-author)$$by-author.name.given$ $by-author.name.family$$if(by-author.affiliations)$\,$^{$for(by-author.affiliations)$$by-author.affiliations$$sep$,$endfor$$if(by-author.attributes.corresponding)$,*$endif$}$$endif$$sep$, $endfor$}
+$-- Address affiliations --$
+\def\Address{$for(by-affiliation)$$^{$by-affiliation.number$}$$by-affiliation.name$$if(by-affiliation.department)$, $by-affiliation.department$$endif$$if(by-affiliation.address)$, $by-affiliation.address$$endif$$if(by-affiliation.city)$, $by-affiliation.city$$endif$$if(by-affiliation.country)$, $by-affiliation.country$$endif$ \\$endfor$}
+$-- Corresponding author --$
+$for(by-author)$
+$if(by-author.attributes.corresponding)$
+\def\corrAuthor{$by-author.name.given$ $by-author.name.family$}
+\def\corrEmail{$by-author.email$}
+$endif$
+$endfor$
+\author[\firstAuthorLast]{\Authors}
+$endif$
+
+\address{}
+\correspondance{}
+\extraAuth{}
+
+\maketitle

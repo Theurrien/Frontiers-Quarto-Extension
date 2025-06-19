@@ -1,0 +1,75 @@
+% Frontiers Harvard format setup
+$if(title)$
+\title[$if(shorttitle)$$shorttitle$$else$$title$$endif$]{$title$}
+$endif$
+
+% Define font commands
+\def\helvetica{\fontfamily{phv}\selectfont}
+\def\helveticaitalic{\fontfamily{phv}\itshape\selectfont}
+\def\helveticabold{\fontfamily{phv}\bfseries\selectfont}
+\def\helveticabolditalic{\fontfamily{phv}\bfseries\itshape\selectfont}
+\def\keyFont{\fontsize{8}{11}\helveticabold }
+
+% Define required Frontiers commands using Quarto's by-author structure
+$if(by-author)$
+% Use a simple approach - just take the first author from the list
+\def\firstAuthorLast{$for(by-author)$$it.name.family$$endfor$}
+
+% Build authors string
+\def\Authors{$for(by-author)$$by-author.name.given$ $by-author.name.family$\,\textsuperscript{$for(by-author.affiliations)$$it.number$$sep$,$endfor$$if(by-author.attributes.corresponding)$,*$endif$}$sep$, $endfor$}
+
+% Extract corresponding author
+\def\corrAuthor{$for(by-author)$$if(by-author.attributes.corresponding)$$by-author.name.given$ $by-author.name.family$$endif$$endfor$}
+\def\corrEmail{$for(by-author)$$if(by-author.attributes.corresponding)$$by-author.email$$endif$$endfor$}
+$else$
+% Fallback if by-author is not available
+\def\firstAuthorLast{Author et~al.}
+\def\Authors{Test Author\,\textsuperscript{1,*}}
+\def\corrAuthor{Test Author}
+\def\corrEmail{test@example.com}
+$endif$
+
+% Address/Affiliations
+$if(by-affiliation)$
+\def\Address{%
+$for(by-affiliation)$%
+\textsuperscript{$by-affiliation.number$}%
+$if(by-affiliation.department)$$by-affiliation.department$, $endif$%
+$if(by-affiliation.name)$$by-affiliation.name$, $endif$%
+$if(by-affiliation.city)$$by-affiliation.city$$endif$%
+$if(by-affiliation.country)$, $by-affiliation.country$$endif$%
+$sep$ \\
+$endfor$%
+}
+$elseif(affiliations)$
+\def\Address{%
+$for(affiliations)$%
+\textsuperscript{$if(it.number)$$it.number$$else$1$endif$}%
+$if(it.department)$$it.department$, $endif$%
+$if(it.name)$$it.name$, $endif$%
+$if(it.city)$$it.city$$endif$%
+$if(it.country)$, $it.country$$endif$%
+$sep$ \\
+$endfor$%
+}
+$else$
+\def\Address{\textsuperscript{1}Test University, Test Department, Test City, Test Country}
+$endif$
+
+\author[\firstAuthorLast]{\Authors}
+\address{}
+\correspondance{}
+\extraAuth{}
+
+\firstpage{1}
+\maketitle
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+$if(keywords)$
+
+\keyFont{\section{Keywords:} $for(keywords)$$keywords$$sep$, $endfor$}
+$endif$
+\end{abstract}
+$endif$

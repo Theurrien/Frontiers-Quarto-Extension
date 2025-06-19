@@ -1,0 +1,54 @@
+% Frontiers Harvard LaTeX Template
+\documentclass[utf8]{FrontiersinHarvard}
+
+% Required packages
+\usepackage{url,hyperref,lineno,microtype}
+\usepackage[onehalfspacing]{setspace}
+\linenumbers
+
+$if(title)$
+\title{$title$}
+$endif$
+
+$if(by-author)$
+% Author definitions
+\def\firstAuthorLast{$for(by-author)$$if(by-author.attributes.corresponding)$$by-author.name.family$ {et~al.}$endif$$endfor$}
+\def\Authors{$for(by-author)$$by-author.name$ $sep$, $endfor$}
+\def\Address{$for(by-affiliation)$$^{$by-affiliation.number$}$$by-affiliation.name$$if(by-affiliation.department)$, $by-affiliation.department$$endif$$if(by-affiliation.city)$, $by-affiliation.city$$endif$$if(by-affiliation.country)$, $by-affiliation.country$$endif$ \\$endfor$}
+
+$for(by-author)$
+$if(by-author.attributes.corresponding)$
+\def\corrAuthor{$by-author.name$}
+\def\corrEmail{$by-author.email$}
+$endif$
+$endfor$
+
+\author[\firstAuthorLast]{\Authors}
+$endif$
+
+\address{}
+\correspondance{}
+\extraAuth{}
+
+\begin{document}
+
+\firstpage{1}
+\maketitle
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+$if(keywords)$
+
+\keyFont{\section{Keywords:} $for(keywords)$$keywords$$sep$, $endfor$}
+$endif$
+\end{abstract}
+$endif$
+
+$body$
+
+$if(bibliography)$
+\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+$endif$
+
+\end{document}
