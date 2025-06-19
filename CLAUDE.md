@@ -56,14 +56,16 @@ When modifying bibliography formatting:
 Update version in `_extension.yml` when making significant changes. Current architecture supports:
 - v1.0.0: Basic Frontiers formatting
 - v1.1.0: Enhanced with clickable DOIs and CSL-compatible formatting
+- v1.2.0: Complete note field suppression for Zotero compatibility and misc entry improvements
 
 ## Important Technical Details
 
 ### Bibliography Style Customizations
 - **DOI Links**: Use `\href{https://doi.org/...}{...}` format, not `\doi{...}` command
 - **Volume/Pages**: Combined in single function with comma separator
-- **Note Filtering**: Article function excludes note field output to prevent citation key display
+- **Note Filtering**: ALL entry type functions exclude note field output to prevent Zotero citation key display
 - **Annotation Removal**: All `\bibAnnote` functionality removed from BST
+- **Misc Entry Type**: Removed hardcoded "[Dataset]" prefix to handle R packages, software, and other misc items properly
 
 ### File Dependencies
 - `logo1.eps` or `logo1.pdf` must be present for header rendering
@@ -79,9 +81,26 @@ The extension supports multiple installation methods:
 ## Common Issues and Solutions
 
 ### Bibliography Problems
-- **Citation keys appearing**: Check if bibliography entries have `note` fields with "Citation Key:" text
+- **Citation keys appearing**: This has been resolved - all entry type functions now exclude note field output
 - **DOI not clickable**: Verify `\href` format in `format.doi` function and hyperref package inclusion
 - **Wrong formatting**: Clear auxiliary files and regenerate bibliography
+
+### Entry Type Function Modifications (v1.2.0)
+All entry type functions have been modified to exclude note field output to prevent Zotero citation keys from appearing in the final bibliography:
+
+- **article**: Already excluded notes (unchanged)
+- **book**: Removed `format.note output`
+- **booklet**: Removed `format.note output`
+- **inbook**: Removed `format.note output`
+- **incollection**: Removed `format.note output`
+- **inproceedings**: Removed `format.note output`
+- **manual**: Removed `format.note output`
+- **mastersthesis**: Removed `format.note output`
+- **misc**: Removed `format.note output` and hardcoded "[Dataset]" prefix
+- **phdthesis**: Removed `format.note output`
+- **proceedings**: Removed `format.note output`
+- **techreport**: Removed `format.note output`
+- **unpublished**: Removed `format.note "note" output.check` (was required field)
 
 ### LaTeX Compilation Issues
 - **Missing logo**: Ensure `logo1.eps` or `logo1.pdf` is present
