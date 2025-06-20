@@ -1,6 +1,6 @@
 title: Frontiers Harvard Format
 author: Urs Chalupny
-version: 1.1.0
+version: 1.3.0
 quarto-required: ">= 1.6.0"
 contributes:
   formats:
@@ -18,11 +18,18 @@ contributes:
         \usepackage{url,hyperref,lineno,microtype,multirow}
         \usepackage[onehalfspacing]{setspace}
         \usepackage{amssymb}
+        \usepackage{etoolbox}
         % Handle Unicode characters
         \DeclareUnicodeCharacter{2212}{-}
         \DeclareUnicodeCharacter{2705}{\checkmark}
-        % Provide basic subcaption compatibility for Frontiers
-        \renewcommand{\subcaption}[1]{\caption{#1}}
+        % Define custom subcaption that generates (A), (B), (C) labels
+        \newcounter{pandocsubfig}
+        \renewcommand{\subcaption}[1]{%
+          \stepcounter{pandocsubfig}%
+          (\Alph{pandocsubfig})%
+        }
+        % Reset subfigure counter at start of each figure
+        \AtBeginEnvironment{figure}{\setcounter{pandocsubfig}{0}}
         \linenumbers
         \onecolumn
         % Ensure proper section numbering depth

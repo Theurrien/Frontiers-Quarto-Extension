@@ -57,6 +57,7 @@ Update version in `_extension.yml` when making significant changes. Current arch
 - v1.0.0: Basic Frontiers formatting
 - v1.1.0: Enhanced with clickable DOIs and CSL-compatible formatting
 - v1.2.0: Complete note field suppression for Zotero compatibility and misc entry improvements
+- v1.3.0: Fixed subfigure captions to generate proper (A), (B), (C) labels instead of descriptive text
 
 ## Important Technical Details
 
@@ -69,7 +70,7 @@ Update version in `_extension.yml` when making significant changes. Current arch
 
 ### File Dependencies
 - `logo1.eps` or `logo1.pdf` must be present for header rendering
-- LaTeX packages: hyperref, url, lineno, microtype, multirow, setspace, amssymb
+- LaTeX packages: hyperref, url, lineno, microtype, multirow, setspace, amssymb, etoolbox
 - Requires pdflatex engine and natbib citation method
 
 ### Extension Installation Paths
@@ -78,12 +79,26 @@ The extension supports multiple installation methods:
 - Local: `quarto add /path/to/extension`
 - Manual: Copy to `_extensions/frontiers-harvard/` in project
 
+### Subfigure Caption Fix (v1.3.0)
+The extension now properly handles Quarto subfigures by implementing a custom `\subcaption` command that generates automatic (A), (B), (C) labels instead of using the alt-text from images. This resolves conflicts between Quarto's caption package and the Frontiers class's built-in subfigure support.
+
+**Technical Implementation:**
+- Custom `pandocsubfig` counter for automatic lettering
+- Counter resets at the beginning of each figure environment
+- Generates `(A)`, `(B)`, `(C)` labels automatically
+- Compatible with Frontiers class's existing figure numbering
+
 ## Common Issues and Solutions
 
 ### Bibliography Problems
 - **Citation keys appearing**: This has been resolved - all entry type functions now exclude note field output
 - **DOI not clickable**: Verify `\href` format in `format.doi` function and hyperref package inclusion
 - **Wrong formatting**: Clear auxiliary files and regenerate bibliography
+
+### Subfigure Caption Issues
+- **Descriptive text instead of (A), (B), (C)**: Fixed in v1.3.0 with custom subcaption implementation
+- **Subcaptions not appearing**: Ensure etoolbox package is available and figure environment is properly structured
+- **Wrong numbering sequence**: Counter automatically resets at each figure environment
 
 ### Entry Type Function Modifications (v1.2.0)
 All entry type functions have been modified to exclude note field output to prevent Zotero citation keys from appearing in the final bibliography:
