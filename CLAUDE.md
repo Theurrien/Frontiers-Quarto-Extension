@@ -58,6 +58,9 @@ Update version in `_extension.yml` when making significant changes. Current arch
 - v1.1.0: Enhanced with clickable DOIs and CSL-compatible formatting
 - v1.2.0: Complete note field suppression for Zotero compatibility and misc entry improvements
 - v1.3.0: Fixed subfigure captions to generate proper (A), (B), (C) labels instead of descriptive text
+- v1.4.0: Added native DOCX format support with Frontiers styling and proper image embedding
+- v1.5.0: Added automatic citation sorting filter for proper alphabetical ordering of multiple citations
+- v1.5.1: Fixed level 4 heading (paragraph) spacing to use run-in style without extra line breaks
 
 ## Important Technical Details
 
@@ -117,7 +120,31 @@ All entry type functions have been modified to exclude note field output to prev
 - **techreport**: Removed `format.note output`
 - **unpublished**: Removed `format.note "note" output.check` (was required field)
 
+### Citation Sorting (v1.5.0)
+
+The extension includes automatic citation sorting for proper academic formatting:
+
+**Citation Sort Filter (`citation-sort.lua`):**
+- Automatically sorts multiple citations alphabetically by citation key
+- Processes citations during Pandoc conversion phase
+- Case-insensitive comparison for consistent ordering
+- Follows Chicago/Harvard style conventions
+
+**Examples:**
+- Input: `[@liu2023; @johnson2023]`
+- Output: `(Johnson-Glenberg et al., 2023; Liu et al., 2023)`
+
 ### LaTeX Compilation Issues
 - **Missing logo**: Ensure `logo1.eps` or `logo1.pdf` is present
 - **Package errors**: Check that all required LaTeX packages are installed
 - **Font issues**: Extension uses standard LaTeX fonts with specific formatting commands
+
+### Citation Sorting Issues
+- **Wrong order**: The `citation-sort.lua` filter automatically handles alphabetical sorting
+- **Filter not working**: Ensure filter is listed in `_extension.yml` under `common.filters`
+- **Custom sorting needed**: Modify the `compare_citations` function in `citation-sort.lua`
+
+### Heading Spacing Issues (v1.5.1)
+- **Level 4 headings with extra spacing**: Fixed in v1.5.1 - paragraph headings now use run-in style
+- **Text not continuing on same line**: The spacing parameter was changed from `{1\p@}` to `{-1em}` in the `\paragraph` definition
+- **Custom heading spacing needed**: Modify the spacing parameters in the `\@startsection` calls in `FrontiersinHarvard.cls`

@@ -1,17 +1,23 @@
 title: Frontiers Harvard Format
-author: Urs Chalupny
-version: 1.3.0
+author: Your Name
+version: 1.5.1
 quarto-required: ">= 1.6.0"
 contributes:
   formats:
+    common:
+      # Common settings for all formats
+      number-sections: true
+      bibliography: references.bib
+      filters:
+        - citation-sort.lua
     pdf:
       documentclass: FrontiersinHarvard
       classoption: utf8
       pdf-engine: pdflatex
       cite-method: natbib
+      natbib-options: "sort"
       biblio-style: Frontiers-Harvard
       keep-tex: true
-      number-sections: true
       secnumdepth: 5
       # Pandoc handles .unnumbered and .appendix classes automatically
       header-includes: |
@@ -44,3 +50,8 @@ contributes:
       format-resources:
         - FrontiersinHarvard.cls
         - Frontiers-Harvard.bst
+    docx:
+      reference-doc: custom-reference-doc.docx
+      toc: false
+      number-sections: true
+      highlight-style: null

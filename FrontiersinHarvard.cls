@@ -545,7 +545,7 @@
 
  \def\paragraph{%
    \@startsection{paragraph}{4}{\z@}
-   {2\p@ plus 1\p@}{1\p@}
+   {2\p@ plus 1\p@}{-1em}
    {\reset@font\itshape\helveticabold\fontsize{11.5}{12}}}
 
  \def\subparagraph{%
