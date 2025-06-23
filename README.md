@@ -106,10 +106,10 @@ When making modifications, always clear bibliography cache files (`.aux`, `.bbl`
 
 ## Changelog
 
-v1.0.0: Basic Frontiers formatting
-v1.1.0: Enhanced with clickable DOIs and CSL-compatible formatting
-v1.2.0: Complete note field suppression for Zotero compatibility and misc entry improvements
-v1.3.0: Fixed subfigure captions to generate proper (A), (B), (C) labels instead of descriptive text
-v1.4.0: Added native DOCX format support with Frontiers styling and proper image embedding
-v1.5.0: Added automatic citation sorting filter for proper alphabetical ordering of multiple citations
-v1.5.1: Fixed level 4 heading (paragraph) spacing to use run-in style without extra line breaks
+- v1.0.0: Basic Frontiers formatting
+- v1.1.0: Enhanced with clickable DOIs and CSL-compatible formatting
+- v1.2.0: Complete note field suppression for Zotero compatibility and misc entry improvements
+- v1.3.0: Fixed subfigure captions to generate proper (A), (B), (C) labels instead of descriptive text
+- v1.4.0: Added native DOCX format support with Frontiers styling and proper image embedding
+- v1.5.0: Added automatic citation sorting filter for proper alphabetical ordering of multiple citations
+- v1.5.1: Fixed level 4 heading (paragraph) spacing to use run-in style without extra line breaks
